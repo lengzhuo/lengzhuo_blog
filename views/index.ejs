@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title%></title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <%- include('header') %>
+    <div class="container">
+        <%- include('navbar') %>
+        <div class="row">
+            <div class="col-md-7 col-md-offset-1 col-sm-8 col-xs-8">
+                <% for(var i=0;i<list.length;i++) { %>
+                    <div class="mytext text-center">
+                        <h1><%= list[i].title%></h1>
+                        <small>作者: <a href="#"><%= list[i].author%></a> <%= list[i].create_at %></small>
+                        <br>
+                        <%if(list[i].img) {%>
+                        <img src="/uploads/<%=list[i].img%>">
+                        <% } %>
+                        <br>
+                        <span><%- list[i].content%></span>
+                        <br>
+                        <a href="#" class="btn btn-danger">阅读文章</a>
+                        <div class="cat">
+                            <span>
+                                <i class="glyphicon glyphicon-heart"></i>
+                                <a href="#">阅读：<%=list[i].view%></a>
+                            </span>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-4">
+                <div class="myblods">
+                    <div class="title">博主简介</div>
+                    <div class="blogger">
+                        <img class="img-responsive portrait" src="images/icon.jpg">
+                        <div class="text-center profile">
+                            <span>王陈选</span>
+                            <br>
+                            <span>百度资深UI设计大师</span>
+                            <br>
+                            <span>公众号:大牙的设计笔记</span>
+                        </div>
+                        <div class="sign text-center"><smill>个性签名:成功者决不放弃，放弃者绝不成功</smill></div>
+                    </div>
+                </div>
+                <div class="myblods">
+                    <div class="title">精选文档</div>
+                    <div class="article text-center">
+                        <img class="img-responsive" src="images/5431586.jpg">
+                        <strong>越努力越幸运-字体效果设计(教程)</strong>
+                        <br>
+                        <small><span>Data</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="glyphicon glyphicon-heart"></span> &nbsp;&nbsp;阅读 num</small>
+                    </div>
+                    <div class="article text-center">
+                        <img class="img-responsive" src="images/5431586.jpg">
+                        <strong>26个英文字母设计-4CD作品</strong>
+                        <br>
+                        <small><span>Data</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="glyphicon glyphicon-heart"></span> &nbsp;&nbsp;阅读 num</small>
+                    </div>
+                </div>
+                <div class="myblods">
+                    <div class="title">热门文章</div>
+                    <div class="article text-center">
+                        <strong>【回音小讲堂】五分钟画视幻&nbsp;分享人:大礼包</strong>
+                        <br>
+                        <small><span>Data</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="glyphicon glyphicon-heart"></span> &nbsp;&nbsp;阅读 num</small>
+                        <br>
+                        <strong>APP适配IOS8,iPhone6和Plus截图简要说明</strong>
+                        <br>
+                        <small><span>Data</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="glyphicon glyphicon-heart"></span> &nbsp;&nbsp;阅读 num</small>
+                        <br>
+                        <strong>Andriod分辨率适配"葵花宝典"</strong>
+                        <br>
+                        <small><span>Data</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="glyphicon glyphicon-heart"></span> &nbsp;&nbsp;阅读 num</small>
+                        <br>
+                        <strong>【设计经验】图标设计初阶要先行...</strong>
+                        <br>
+                        <small><span>Data</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="glyphicon glyphicon-heart"></span> &nbsp;&nbsp;阅读 num</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <% if(totalPage > 1){ %>
+            <ul class="pager">
+                <% if(page > 1){ %>
+                    <li><a href="/?page=<%=parseInt(page)-1%>"><span>&laquo;</span></a></li>
+                <% } %>
+                <li><a href="#">第<%= page %>页/共<%= totalPage %>页</a></li>
+                <% if(page < totalPage){ %>
+                    <li><a href="/?page=<%= parseInt(page)+1%>"><span>&raquo;</span></a></li>
+                <% } %>
+            </ul>
+            <% } %>
+        </nav>
+    </div>
+    <%- include('footer') %>
+</body>
+<script src="javascripts/jquery-3.2.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</html>

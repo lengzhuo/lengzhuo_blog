@@ -1,0 +1,10 @@
+.container{
+    height: 550px;
+}
+.row{
+    margin-top: 100px;
+}
+.myform span{
+    font-size: 30px;
+    color:red;
+}

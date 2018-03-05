@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title%></title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/write_style.css">
+</head>
+<body>
+    <%- include('header')%>
+    <div class="container">
+        <%- include('navbar')%>
+        <form action="/article/add" method="post" enctype="multipart/form-data">
+            <div class="row text-center">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;<strong>老王</strong>
+                    <br>
+                    <div class="view" id="view"></div>
+                    <div class="btn btn-danger btn-block upload text-center">
+                        <input type="file" onchange="viewImg(this)" name="img"><span>上传封面图片</span>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-8 col-xs-6">
+                    <div class="form-group text-left">
+                        <label for="biaoti">标题</label>
+                        <input type="text" id="biaoti" class="form-control" placeholder="请输入标题" name="title">
+                    </div>
+                    <div class="row">
+                        <div class="form-group text-left col-md-6">
+                            <label for="genre">类型</label>
+                            <select name="category_id" id="genre" class="form-control">
+                                <% for(let i=0;i<category.length;i++){ %>
+                                <option value="<%= category[i].name%>"><%= category[i].name%></option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="form-group text-left col-md-6">
+                            <label for="writer">原作者</label>
+                            <input type="text" id="writer" class="form-control" placeholder="请输入原作者" name="author">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 text-left">
+                            <label class="text-left">精华文章</label>
+                        </div>
+                    </div>
+                    <div class="row radio">
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <label><input type="radio" name="is_jing" value="1">是</label>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <label><input type="radio" name="is_jing" value="0" checked>否</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-left">
+                <div class="col-md-12 col-sm-12 col-xs-12 lead">
+                    <strong>文章正文</strong>&nbsp;&nbsp;<small>在这里填写详细的内容分享给大家</small>
+                </div>
+            </div>
+            <div class="row">
+                <textarea id="content-area" style="display: none;" class="form-control" rows="3" name="content"></textarea>
+                <div class="col-md-12 col-sm-12 col-xs-12" id="edit"></div>
+            </div>
+            <div class="row lead">
+                <div class="col-md-3 col-md-offset-3 col-sm-offset-3 col-sm-3 col-xs-6">
+                    <button class="btn btn-success btn-block">保存文档</button>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <input type="submit" class="btn btn-danger btn-block" value="立即发布">
+                </div>
+            </div>
+        </form>
+    </div>
+    <%- include('footer')%>
+</body>
+<script src="/javascripts/jquery-3.2.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+<script src="/javascripts/write.js"></script>
+</html>
